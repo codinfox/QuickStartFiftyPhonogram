@@ -1,0 +1,189 @@
+<!-- 代码写的有点烂，大家见谅啊。 ben/codinfox-->
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+
+        <!-- Always force latest IE rendering engine (even in intranet) & Chrome Frame
+        Remove this if you use the .htaccess -->
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+        <title>index</title>
+        <meta name="description" content="" />
+        <meta name="author" content="Ben" />
+
+        <meta name="viewport" content="width=device-width; initial-scale=1.0" />
+
+        <!-- Replace favicon.ico & apple-touch-icon.png in the root of your domain and delete these references -->
+        <link rel="shortcut icon" href="/favicon.ico" />
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+        <script>
+            /**
+             * @author Ben
+             */
+            function JMHelper(ping, pian, yin) {
+                this.ping = ping;
+                this.pian = pian;
+                this.yin = yin;
+            }
+
+            var data = new Array();
+
+            data[0] = new JMHelper('あ', 'ア', 'a');
+            data[1] = new JMHelper('い', 'イ', 'i');
+            data[2] = new JMHelper('う', 'ウ', 'u');
+            data[3] = new JMHelper('え', 'エ', 'e');
+            data[4] = new JMHelper('お', 'オ', 'o');
+            data[5] = new JMHelper('か', 'カ', 'ka');
+            data[6] = new JMHelper('き', 'キ', 'ki');
+            data[7] = new JMHelper('く', 'ク', 'ku');
+            data[8] = new JMHelper('け', 'ケ', 'ke');
+            data[9] = new JMHelper('こ', 'コ', 'ko');
+            data[10] = new JMHelper('さ', 'サ', 'sa');
+            data[11] = new JMHelper('し', 'シ', 'shi');
+            data[12] = new JMHelper('す', 'ス', 'su');
+            data[13] = new JMHelper('せ', 'セ', 'se');
+            data[14] = new JMHelper('そ', 'ソ', 'so');
+            data[15] = new JMHelper('た', 'タ', 'ta');
+            data[16] = new JMHelper('ち', 'チ', 'chi');
+            data[17] = new JMHelper('つ', 'ツ', 'tsu');
+            data[18] = new JMHelper('て', 'テ', 'te');
+            data[19] = new JMHelper('と', 'ト', 'to');
+            data[20] = new JMHelper('な', 'ナ', 'na');
+            data[21] = new JMHelper('に', 'ニ', 'ni');
+            data[22] = new JMHelper('ぬ', 'ヌ', 'nu');
+            data[23] = new JMHelper('ね', 'ネ', 'ne');
+            data[24] = new JMHelper('の', 'ノ', 'no');
+            data[25] = new JMHelper('は', 'ハ', 'ha');
+            data[26] = new JMHelper('ひ', 'ヒ', 'hi');
+            data[27] = new JMHelper('ふ', 'フ', 'fu');
+            data[28] = new JMHelper('へ', 'ヘ', 'he');
+            data[29] = new JMHelper('ほ', 'ホ', 'ho');
+            data[30] = new JMHelper('ま', 'マ', 'ma');
+            data[31] = new JMHelper('み', 'ミ', 'mi');
+            data[32] = new JMHelper('む', 'ム', 'mu');
+            data[33] = new JMHelper('め', 'メ', 'me');
+            data[34] = new JMHelper('も', 'モ', 'mo');
+            data[35] = new JMHelper('や', 'ヤ', 'ya');
+            data[36] = new JMHelper('ゆ', 'ユ', 'yu');
+            data[37] = new JMHelper('よ', 'ヨ', 'yo');
+            data[38] = new JMHelper('ら', 'ラ', 'ra');
+            data[39] = new JMHelper('り', 'リ', 'ri');
+            data[40] = new JMHelper('る', 'ル', 'ru');
+            data[41] = new JMHelper('れ', 'レ', 're');
+            data[42] = new JMHelper('ろ', 'ロ', 'ro');
+            data[43] = new JMHelper('わ', 'ワ', 'wa');
+            data[44] = new JMHelper('を', 'ヲ', 'wo');
+            data[45] = new JMHelper('ん', 'ン', 'n');
+
+            function getData() {
+                var t = Math.floor(Math.random() * data.length);
+                return data[t];
+            }
+
+            var currentData = getData();
+            var mode = 1;
+
+            function copyClick() {
+                document.getElementById("rome").style.display = "block";
+            }
+
+            function reciteClick() {
+                document.getElementById("rome").style.display = "none";
+            }
+
+            function modeSwitch(m) {
+                mode = m;
+            }
+
+            function load() {
+                document.getElementById("display").innerHTML = currentData.ping;
+                document.getElementById("rome").innerHTML = currentData.yin;
+            }
+
+            function keyUpFunc() {
+                var v = document.getElementById("input_box");
+                if (currentData.yin == v.value) {
+                    currentData = getData();
+                    var dis;
+                    if (mode == 1) {
+                        dis = currentData.ping;
+                    } else if (mode == 2) {
+                        dis = currentData.pian;
+                    } else if (mode == 3) {
+                        if (Math.floor(Math.random() * 2) == 0) {
+                            dis = currentData.ping;
+                        } else {
+                            dis = currentData.pian;
+                        }
+                    }
+                    document.getElementById("display").innerHTML = dis;
+                    document.getElementById("rome").innerHTML = currentData.yin;
+                    v.value = "";
+                }
+            }
+
+        </script>
+        <style>
+			#display {
+				color: black;
+				font-size: 100px;
+				text-align: center;
+				width: 100%;
+			}
+			#input {
+				text-align: center;
+			}
+			#input_box {
+				text-align: center;
+				font-size: 30px;
+				height: 50px;
+				width: 100px;
+				color: black;
+				border: none;
+				background: #cccccc;
+				display: inline-block;
+			}
+			#rome {
+				text-align: center;
+				font-size: 20px;
+				color: #cccccc;
+			}
+        </style>
+    </head>
+
+    <body style="margin: 0 0 0 0" onload="load();void(0);">
+        <div style="position: fixed; height: 300px; width: 250px; top:50%; margin-top: -200px;left: 50%;margin-left:-125px;">
+            <div style="margin: auto auto">
+                <h1 style="text-align: center;">五十音图半半日通</h1>
+                <div id="display"></div>
+                <div id="rome"></div>
+                <div id="input">
+                    <input type="text" id="input_box" onkeyup="keyUpFunc();void(0);" />
+                    <br/>
+                    <form>
+                        <input id="copy" onclick="copyClick();void(0);" type="radio" style="display: inline-block; margin-top: 20px;" name="func" checked>
+                        抄写</input>
+
+                        <input id="recite" onclick="reciteClick();void(0);" type="radio" style="display: inline-block; margin-top: 20px;" name="func">
+                        默写</input>
+                    </form>
+                    <br/>
+                    <form>
+                        <input id="pingjia" onclick="modeSwitch(1);void(0);" type="radio" style="display: inline-block; margin-top: 20px;" name="mode" checked>
+                        平假名</input>
+
+                        <input id="pianjia" onclick="modeSwitch(2);void(0);" type="radio" style="display: inline-block; margin-top: 20px;" name="mode">
+                        片假名</input>
+
+                        <input id="hunhe" onclick="modeSwitch(3);void(0);" type="radio" style="display: inline-block; margin-top: 20px;" name="mode">
+                        混合</input>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+                <footer style="position:fixed; width: 200px; text-align: center; left: 50%; bottom:0; margin-left:-100px;">Copyleft codinfox</footer>
+
+    </body>
+</html>
